@@ -1,0 +1,35 @@
+/* A holiday weekend is coming up, and Hotel Bytelandia needs to find out if it has enough rooms to accommodate all potential guests.
+A number of guests have made reservations. Each reservation consists of an arrival time, and a departure time.
+The hotel management has hired you to calculate the maximum number of guests that will be at the hotel simultaneously.
+Note that if one guest arrives at the same time another leaves, they are never considered to be at the hotel simultaneously (see the second example).*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		    int l=sc.nextInt(),count=0,c=0;
+		    int[]a=new int[l];
+		    int[]p=new int[l];
+		    for(int i=0;i<l;i++){
+		        a[i]=sc.nextInt();
+		    }
+		    for(int i=0;i<l;i++){
+		        p[i]=sc.nextInt();
+		    }
+		Arrays.sort(a);
+		Arrays.sort(p);
+		for(int i=0;i<l;i++){
+		    if(a[i]<p[c]) count++;
+		    else c++;
+		   }
+		   System.out.println(count);
+		}
+	}
+}
