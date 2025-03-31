@@ -1,0 +1,33 @@
+/* Zlatan and Ramos are playing a game on a binary string S of length N.
+Zlatan and Ramos make alternating moves with Zlatan going first.
+In one move, a player will:Select an index (1≤i<N) such that  =S i+1 and delete both Si and Si+1 from the string 
+S. Note that N gets reduced by 2 when both characters are deleted. 
+If a player cannot select any such index i, he loses the game.Determine the winner of the game if both players play optimally.*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	 Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t--!=0){
+       int n=sc.nextInt();
+        String  s=sc.next();
+   int pow=0;
+   int ans=0;
+   int ans1=0;
+  for(int i=0;i<n;i++){
+    if(s.charAt(i)=='1'){
+        pow++;
+    }
+  }
+  ans1=n-pow;
+  ans=Math.min(pow,ans1);
+        System.out.println((ans%2!=0)?"Zlatan":"Ramos");
+        }
+    }
+ }
