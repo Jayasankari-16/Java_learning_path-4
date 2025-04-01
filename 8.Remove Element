@@ -1,0 +1,37 @@
+/* You are given an array A=[A1 ,A2 ,…,AN ] consisting of N positive integers.
+You are also given a constant K, using which you can perform the following operation on 
+A:Choose two distinct indices i and j such that Ai +Aj≤K, and remove either Ai or Aj from A.
+Is it possible to obtain an array consisting of only one element using several (possibly, zero) such operations?*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		    int n=sc.nextInt();
+		    int k=sc.nextInt();
+		    int[]a=new int[n];
+		    for(int i=0;i<n;i++){
+		        a[i]=sc.nextInt();
+		    }
+		    if(n==1){
+		        System.out.println("YES");
+		    }
+		    else{
+		        Arrays.sort(a);
+		            if(a[0]+a[n-1] <=k){
+		                System.out.println("YES");
+		            }
+		            else{
+		                System.out.println("NO");
+		            }
+		        }
+		}
+	}
+}
