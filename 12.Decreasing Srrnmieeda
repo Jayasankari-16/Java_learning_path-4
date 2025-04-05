@@ -1,0 +1,26 @@
+/* You are given two integers L and R. Find the smallest non-negative integer N such that N%L>N%(L+1)>…>N%(R−1)>N%R.
+Here, % is the modulo operator, so A%B is the remainder of A after division by B. For example, 11%3=2.*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		    int l=sc.nextInt();
+		    int r=sc.nextInt();
+		    
+		    if(r >=2*l){
+		        System.out.println(-1);
+		    }
+		    else{
+		        System.out.println(r);
+		    }
+		}
+	}
+}
