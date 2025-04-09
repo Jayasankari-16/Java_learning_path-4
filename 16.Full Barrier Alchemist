@@ -1,0 +1,63 @@
+/* The height of Edward is H units and he has an alchemic life force of L units. 
+Moreover, he can duck by Y1 units and jump by height Y2 units (as explained in the figures).
+He starts crossing barriers in sequence, starting from barrier 1 till the barrier N.
+Whenever he can't pass a barrier by ducking or jumping (considered passed even when the barrier just touches him), he uses Alchemy to break the barrier. 
+However, this costs him a single unit of his alchemic life force.
+If after breaking a barrier no life force is left, Edward gets completely exhausted, unable to pass that barrier.
+How many barriers can Edward cross?And remember never to call him a pipsqueak if his height is too short!*/
+
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+
+class Codechef {
+    public static void main(String[] args) throws java.lang.Exception {
+        
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        while (T-- > 0) {
+
+            int N = sc.nextInt();
+            int H = sc.nextInt();
+            int Y1 = sc.nextInt();
+            int Y2 = sc.nextInt();
+            int L = sc.nextInt();
+            int[][] arr = new int[N][2];
+            for (int i = 0; i < N; i++) {
+                for (int j = 0; j < 2; j++) {
+                    arr[i][j] = sc.nextInt();
+                }
+            }
+            int count=0;
+            for (int i = 0; i < N; i++) {
+                if (arr[i][0] == 1)
+                 {
+                        if(arr[i][1]>=(H-Y1))
+                            count++;
+                        else if(L>1)
+                        {
+                            count++;
+                            L--;
+                        }
+                        else if(L==1)
+                            break;
+                 }
+                else {
+                    if(Y2>=arr[i][1])
+                        count++;
+                    else if(L>1)
+                    {
+                        count++;
+                        L--;
+                    }
+                    else if(L==1)
+                        break;
+                }
+            }
+            System.out.println(count);
+        }
+    }
+}
