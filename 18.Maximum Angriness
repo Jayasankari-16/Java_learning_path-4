@@ -1,0 +1,29 @@
+/& Alice and Bob were playing a game yet again but this time, Bob already lost the game. Now he wants to take revenge.
+Bob saw a jigsaw puzzle which was solved by Alice and decided to jumble the puzzle pieces again. There are 
+N puzzle pieces in a line numbered from 
+1 to N in increasing order and he has K minutes before Alice catches him.Bob can swap any two pieces of the puzzle. Each swap takes 
+1 minute, and so Bob can make at most K swaps.
+Let Ai denote the piece in the i-th position after Bob finishes making his swaps.
+Alice's angriness is defined to be the number of pairs (i,j) such that 
+1≤i<j≤N Bob would like to make Alice as angry as possible, so he asks for your help: if he performs his swaps optimally, what is the maximum angriness he can achieve?*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+		    long n=sc.nextLong();
+		    long k=sc.nextLong();
+		    long y=Math.min(k,n/2);
+		    long answer=2*n*y-(2*y*(y+1)-y);
+		    System.out.println(answer);
+		}
+	}
+}
