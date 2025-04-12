@@ -1,0 +1,29 @@
+/* Output any attractive permutation of length N. If no attractive permutation exists, print −1 instead.*/
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+        while (t-- > 0) {
+            int n = scanner.nextInt();
+            if (n <= 2) {
+                System.out.println("-1");
+                continue;
+            }
+            if ((n & 1) != 0) {
+                for (int i = 1; i <= n; i++) {
+                    System.out.print(i + " ");
+                }
+            } else {
+                for (int i = 1; i <= n - 3; i++) {
+                    System.out.print(i + " ");
+                }
+                System.out.print(n + " " + (n - 2) + " " + (n - 1));
+            }
+            System.out.println();
+        }
+        scanner.close();
+    }
+}
