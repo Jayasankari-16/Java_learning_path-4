@@ -1,0 +1,68 @@
+/* Akash got his money from CodeChef today, so he decided to have dinner outside.
+He went to a restaurant having N items on the menu. The ith  item on the menu belongs to the category Ai and requires Bi time to be cooked.
+Akash wants to have a complete meal. Thus, his meal should have at least K distinct categories of food.
+The total time required to get all the food Akash orders, is the sum of the cooking time of all the items in the order.
+Help Akash find the minimum time required to have a complete meal or tell if it is not possible to do so.*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while(t-- > 0)
+        {
+            int n = sc.nextInt();
+            int k = sc.nextInt();
+            int a[] = new int[n];
+            for(int i = 0; i < n; i++)
+            {
+                a[i] = sc.nextInt();
+            }
+            int b[] = new int[n];
+            for(int j = 0; j < n; j++)
+            {
+                b[j] = sc.nextInt();
+            }
+            HashMap<Integer, Integer> h = new HashMap<>();
+            for(int i = 0; i < n; i++)
+            {
+                if(h.containsKey(a[i]))
+                {
+                    if(b[i] < h.get(a[i]))
+                    {
+                       h.put(a[i], b[i]); // Use put to update the value
+                        //h.put(a[i], Math.min(h.getOrDefault(a[i], Integer.MAX_VALUE), b[i]));
+                    }
+                }
+                else
+                {
+                    h.put(a[i], b[i]);
+                }
+            }
+            if(h.size() < k)
+            {
+                System.out.println(-1);
+            }
+            else
+            {
+                long tot=0;
+                ArrayList<Integer>sorArr = new ArrayList<>();
+		        for(Map.Entry<Integer,Integer>mm:h.entrySet())
+		        {
+		            sorArr.add(mm.getValue());
+		        }
+		        Collections.sort(sorArr);
+		        for(int i=0;i<k;i++)
+		            tot+=sorArr.get(i);
+		       // System.out.println(time);
+                System.out.println(tot);
+            }
+        }
+	}
+}
