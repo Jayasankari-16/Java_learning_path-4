@@ -1,0 +1,27 @@
+/* Chef is playing a game with his friend Misha. They have a pile containg N coins. 
+Players take alternate turns, removing some coins from the pile. 
+On each turn, a player can remove either one coin or coins equal to some prime power (i.e. px coins, where p - prime number and x - positive integer).
+Game ends when the pile becomes empty. The player who can not make a move in his turn loses.
+Chef plays first. Your task is to find out who will win the game, provided that both of the player play optimally.*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t-->0)
+        {
+            int n=sc.nextInt();
+            if(n%6==0)
+                System.out.println("Misha");
+            else
+                System.out.println("Chef");
+        }
+	}
+}
