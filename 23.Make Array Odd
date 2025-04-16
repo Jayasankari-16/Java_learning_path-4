@@ -1,0 +1,43 @@
+/* You are given an array A and an integer X. 
+You are allowed to perform the following operation on the array:
+Select two distinct indices i and j and set both Ai and Aj as ((Ai⊕Aj)∣X) simultaneously. Here 
+⊕ and ∣ denote the bitwise XOR and bitwise OR operations respectively.
+Find the minimum number of operations required to make all elements of the array odd. 
+If it is not possible to do so, print −1 instead.*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		long t=sc.nextLong();
+		while(t-->0){
+		    long n=sc.nextLong();
+		    long x=sc.nextLong();
+		    long even=0;
+		    long odd=0;
+		    for(long i=0;i<n;i++){
+		        long tem=sc.nextLong();
+		        if(tem%2!=0) odd++;
+		        else 
+		        even++;
+		    }
+		    if(x%2!=0){
+		        if(even%2!=0)
+		        System.out.println(even/2+1);
+		        else
+		        System.out.println(even/2);
+		    }
+		    else{
+		        if(odd==0)
+		        System.out.println(-1);
+		        else
+		        System.out.println(even);
+		    }
+		}
+	}
+}
