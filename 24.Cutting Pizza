@@ -1,0 +1,46 @@
+/* Vasya has ordered a pizza delivery. The pizza can be considered a perfect circle. 
+There were n premade cuts in the pizza when it was delivered. Each cut is a straight segment connecting the center of the pizza with its boundary.
+Let O be the center of the pizza, Pi be the endpoint of the i-th cut lying on the boundary, and R be the point of the boundary straight to the right of O.
+Then the counterclockwise-measured angle ∠ROPi is equal to ai degrees, where ai is an integer between 0 and 359. 
+Note that angles between 0 and 180 angles correspond to Pi in the top half of the pizza, while angles between180 and 360 angles correspond to the bottom half.
+Vasya may cut his pizza a few more times, and the new cuts still have to be straight segments starting at the center.
+He wants to make the pizza separated into several equal slices, with each slice being a circular sector with no cuts inside of it. How many new cuts Vasya will have to make?*/
+
+import java.util.*;
+
+class Codechef {
+
+    static int gcd(int a, int b) {
+        if (b == 0) return a;
+        return gcd(b, a % b);
+    }
+
+    public static void main(String[] args) throws java.lang.Exception {
+        Scanner obj = new Scanner(System.in);
+        int t = obj.nextInt();
+        while (t-- > 0) {
+            int n = obj.nextInt();
+            int[] a = new int[n];
+            for (int i = 0; i < n; i++) {
+                a[i] = obj.nextInt();
+            }
+
+            Arrays.sort(a);
+            List<Integer> segments = new ArrayList<>();
+            for (int i = 1; i < n; i++) {
+                segments.add(a[i] - a[i - 1]);
+            }
+            segments.add((360 + a[0]) - a[n - 1]);
+            int gcd_val = segments.get(0);
+            for (int i = 1; i < segments.size(); i++) {
+                gcd_val = gcd(gcd_val, segments.get(i));
+            }
+
+            int total_segments = 360 / gcd_val;
+
+            int additional_cuts = total_segments - n;
+
+            System.out.println(additional_cuts);
+        }
+    }
+}
