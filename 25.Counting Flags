@@ -1,0 +1,21 @@
+/* Mike knows, that there are some flags, that correspond to one pattern, but colored in different ways.*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        while (T--> 0) {
+            long N = sc.nextLong();
+            long res = 2 * N * (N - 1) * (N - 1) + 
+                       N * (N - 1) * (N - 2) + 
+                       2 * N * (N - 1) * (N - 2) * (N - 2);
+            System.out.print(res + "\n");
+        }
+	}
+}
