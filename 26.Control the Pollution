@@ -1,0 +1,29 @@
+/* There are two types of vehicles in Chefland.Bus which has a capacity of 100 people.
+Car which has a capacity of 4 people.There are N people who want to travel from place A to place B.
+You know that a single bus emits X units of smoke while a single car emits Y units of smoke in their journey from A to B.
+You want to arrange some buses and cars to carry all these N people such that total smoke emitted is minimized. 
+Output the minimized smoke value.*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t-->0)
+        {
+            int n=sc.nextInt();
+            int x=sc.nextInt();
+            int y=sc.nextInt();
+            int ans=(x)>(y*25)?(n/100)*25*y:(n/100)*x;
+            n=n%100;
+            ans=ans+((int)Math.ceil(n/4.0)*y>x?x:((int)Math.ceil(n/4.0))*y);
+            System.out.println(ans);
+        }
+
+	}
+}
