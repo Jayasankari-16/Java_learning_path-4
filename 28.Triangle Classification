@@ -1,0 +1,71 @@
+/* Triangle classification is an important problem in modern mathematics. Mathematicians have developed many criteria according to which a triangle can be classified.
+In this problem, you will be asked to classify some triangles according to their sides and angles.
+According to their measure, angles may be:Acute — an angle that is less than 90 degreesRight — a 90-degrees angleObtuse — an angle that is greater than 90 degrees
+According to their sides, triangles may be:Scalene — all sides are differentIsosceles — exactly two sides are equal
+According to their angles, triangles may be:Acute — all angles are acuteRight — one angle is rightObtuse — one angle is obtuseTriangles with three equal sides (equilateral triangles) will not appear in the test data.
+The triangles formed by three collinear points are not considered in this problem.
+In order to classify a triangle, you should use only the adjactives from the statement.
+There is no triangle which could be described in two different ways according to the classification characteristics considered above.*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner scanner = new Scanner(System.in);
+        int subtaskId = scanner.nextInt();
+        int T = scanner.nextInt();
+
+        for (int i = 0; i < T; i++) {
+            int x1 = scanner.nextInt();
+            int y1 = scanner.nextInt();
+            int x2 = scanner.nextInt();
+            int y2 = scanner.nextInt();
+            int x3 = scanner.nextInt();
+            int y3 = scanner.nextInt();
+
+            double side1 = (Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+            double side2 = (Math.pow(x3 - x2, 2) + Math.pow(y3 - y2, 2));
+            double side3 = (Math.pow(x1 - x3, 2) + Math.pow(y1 - y3, 2));
+
+
+            String sideClassification = classifySideTriangle(side1, side2, side3);
+            String angleClassification = classifyAngleTriangle(side1, side2, side3);
+
+
+            if (subtaskId == 1) {
+                System.out.println(sideClassification + " triangle");
+            } else if (subtaskId == 2) {
+                System.out.println(sideClassification + " " + angleClassification + " triangle");
+            }
+        }
+    }
+
+    public static String classifySideTriangle(double side1, double side2, double side3) {
+        if (side1 != side2 && side2 != side3 && side3 != side1) {
+            return "Scalene";
+        } else {
+            return "Isosceles";
+        }
+    }
+
+    public static String classifyAngleTriangle(double side1, double side2, double side3) {
+        double[] sides = { side1, side2, side3 };
+        double maxSide = Math.max(Math.max(side1, side2), side3);
+        double sumOfSquares = 0;
+        for (double side : sides) {
+            sumOfSquares += side;
+        }
+
+        if (maxSide * 2 == sumOfSquares) {
+            return "right";
+        } else if (maxSide * 2 > sumOfSquares) {
+            return "obtuse";
+        } else {
+            return "acute";
+        }
+	}
+}
