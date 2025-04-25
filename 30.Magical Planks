@@ -1,0 +1,34 @@
+/* Ryan is a boy from a small town, who has been given a task by his father. He has N wooden planks, numbered from 
+1 to N, which are colored either black or white.His task is to color all planks the same color! But there is some magic in the winds of his small town. Whenever he colors the 
+ith ( plank which has the color Si) to a color P then following events happen:
+if 2≤i≤N and Si=S i−1 , then color of th(i−1) th plank changes to P.if 1≤i≤N−1 and Si =S i+1 , then color of (i+1) th plank changes to P.
+Now this process continues for the newly colored planks also. If none of the neighbors have same color, then nothing happens to the neighbors.*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+		    int n=sc.nextInt();
+		    String s=sc.next();
+		    int grp=0;
+		    for(int i=1;i<n;i++)
+		    {
+		        if(s.charAt(i-1)!=s.charAt(i))
+		            grp++;
+		    }
+		    if(grp%2==0)
+		    System.out.println(grp/2);
+		    else
+		    System.out.println(grp/2+1);
+		}
+	}
+}
