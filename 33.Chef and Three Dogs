@@ -1,0 +1,25 @@
+/* Chef has three dogs sitting at the vertices of an equilateral triangle.
+The length of each side of the triangle equals to s meters.
+Chef gives the command "Start!" and each dog starts to run with constant speed v meters per second.
+At each moment, each dog is running towards the dog just right to him (in counter-clockwise direction).
+Therefore, their trajectories are forming some spirals that converging to one point as illustrated below.*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		while(T-->0){
+		       long s = sc.nextLong();
+            long v = sc.nextLong();
+            
+            System.out.printf("%.6f\n", 2.0 * s / (3.0 * v));
+		}
+
+	}
+}
