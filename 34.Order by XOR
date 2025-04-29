@@ -1,0 +1,68 @@
+/* You are given three distinct integers A,B, and C.Find any integer X (0≤X<2 30) such that:
+(A⊕X)<(B⊕X)<(C⊕X), where ⊕ denotes the Bitwise XOR operation.If no such X exists, print −1 instead.*/
+import java.util.*;
+
+import java.lang.*;
+
+import java.io.*;
+
+public class Main {
+    static int msbDiff(int x, int y) {
+        for (int i = 29; i >= 0; i--) {
+            if (((x >> i) & 1) != ((y >> i) & 1)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while(t-- > 0) {
+            int A = sc.nextInt();
+            int B = sc.nextInt();
+            int C = sc.nextInt();
+            
+       
+            int j = msbDiff(A, B);
+            int req1 = -1;
+            if(j != -1) {
+                if (((A >> j) & 1) == 0 && ((B >> j) & 1) == 1) {
+                    req1 = 0;
+                } else if (((A >> j) & 1) == 1 && ((B >> j) & 1) == 0) {
+                    req1 = 1;
+                }
+            }
+            int k = msbDiff(B, C);
+            int req2 = -1;
+            if(k != -1) {
+                if (((B >> k) & 1) == 0 && ((C >> k) & 1) == 1) {
+                    req2 = 0;
+                } else if (((B >> k) & 1) == 1 && ((C >> k) & 1) == 0) {
+                    req2 = 1;
+                }
+            }
+            if(j == k && req1 != -1 && req2 != -1 && req1 != req2) {
+                System.out.println(-1);
+                continue;
+            }
+            int X = 0;
+            if(j != -1) {
+                X |= (req1 << j);
+            }
+            if(k != -1 && k != j) {
+                X |= (req2 << k);
+            }
+            if (((A ^ X) < (B ^ X)) && ((B ^ X) < (C ^ X))) {
+                System.out.println(X);
+            } else {
+                if((A < B) && (B < C))
+                    System.out.println(0);
+                else
+                    System.out.println(-1);
+            }
+        }
+        sc.close();
+    }
+}
