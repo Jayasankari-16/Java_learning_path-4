@@ -1,0 +1,39 @@
+/* Chef likes problems related to numbers a lot. 
+He is generally quite good at solving these kinds of problems, but today he got stuck at one number theory problem, and so he asks your help to solve it.
+Given a positive integer N, find out how many positive integers X satisfy the equation X + S(X) + S(S(X)) = N, 
+where S(X) denoting sum of digits of X in decimal (base 10) representation*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+    public int Counter(int a){
+        int sum=0;
+        while(a>0){
+            sum=sum+a%10;
+            a=a/10;
+        }
+        return sum;
+    }
+    
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int counter=0;
+		
+		Codechef codechef = new Codechef();
+        int start= Math.max(n-90*2,0);
+        
+        for (int i = start; i < n; i++) {
+            int y = codechef.Counter(i);             
+            int z = codechef.Counter(y); 
+            if (i + y + z == n) {
+                counter++;
+            }
+        }
+		System.out.println(counter);
+	}
+}
