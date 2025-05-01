@@ -1,0 +1,51 @@
+/* Babidi has summoned Majin Vegeta. He orders him to kill Supreme Kai. But Vegeta wants to get out of his control.
+Babidi has laid out a trap. Vegeta is standing at the 
+nth level of mind control. In order to defeat Babidi's trap, he needs to reach 
+mth level. The levels are continuous increasing integers. At each increment of level, 
+nth to (n+1)th level, for example, the energy used is - number of distinct prime factors of n.
+Vegeta needs your help in order to figure out how much total minimum energy he needs to defeat Babidi's trap.
+The total energy is the sum of energy used at each increment of a level.In the calculation of energy, n and m are inclusive.*/
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+    public static int Counter(int n){
+        Set<Integer> factors = new HashSet<>();
+        
+        while (n % 2 == 0) {
+            factors.add(2);
+            n /= 2;
+        }
+        
+        for (int i = 3; i <= Math.sqrt(n); i += 2) {
+            while (n % i == 0) {
+                factors.add(i);
+                n /= i;
+            }
+        }
+        
+        if (n > 2) {
+            factors.add(n);
+        }
+        
+        return factors.size();
+    }
+    
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		    int n=sc.nextInt();
+		    int m=sc.nextInt();
+		    int answer=0;
+		    for(int i=n;i<m;i++){
+		        answer+= Counter(i);
+		    }
+		    
+		    System.out.println(answer);
+		}
+	}
+}
