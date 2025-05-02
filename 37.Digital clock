@@ -1,0 +1,40 @@
+/* It's possible for all the digits displayed on a digital clock in the hours:minutes format to be identical. The time shown above (3:33) is an example of such a situation.
+\Other examples are 2:2 and 1:11. Note that the digits of 33:33 are identical, but it is not a valid time on a usual digital clock.
+The above example was for a usual 24-hour format digital clock. Let's consider a more general clock,
+where an hour lasts M minutes and a day lasts H hours (therefore, the clock can show any number of hours between 0 and H-1, inclusive,
+and any number of minutes between 0 and M-1, inclusive). Both the hours and the minutes are shown without leading zeroes in decimal notation and their separator (e.g., ':') doesn't matter.
+Can you tell how many minutes during a day will the digital clock have identical digits displayed on it?*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+    public static void main(String[] args) throws java.lang.Exception
+    {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t-- > 0) {
+
+            int h = sc.nextInt(), m = sc.nextInt();
+
+            int count = 0;
+            if (0 <= h && 0 <= m) count++;
+            for (int i = 1; i <= 9; i++) {
+
+                int a = i, b = i * 10 + i;
+                if (a < m && b < h)
+                    count++;
+                if (a < m && a < h)
+                    count++;
+                if (b < m && b < h)
+                    count++;
+                if (b < m && a < h)
+                    count++;
+            }
+            System.out.println(count);
+
+        }
+    }
+}
