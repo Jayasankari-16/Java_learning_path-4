@@ -1,0 +1,29 @@
+/* Alice jogs everyday to keep herself fit and active. She noticed that she burns 
+X calories when jogging the first kilometer, and for K>1, jogging the Kth kilometer burns calories equivalent to the total number 
+of calories burned while jogging the first K−1 kilometers.What is the total number of calories that Alice burns after jogging 
+for N kilometers? The answer can be very large, so report it modulo 7109+7(1000000007).*/
+ import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	static final long MODULO= 1000000007;
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int testCases = sc.nextInt();
+
+        long arr[] = new long[1000000];
+        arr[0] = 1;
+        for (int i = 1; i < 1000000; i++) {
+            arr[i]= (long) ((arr[i-1]*2)%MODULO);
+        }
+
+        while(testCases-->0){
+            int n = sc.nextInt();
+            int x = sc.nextInt();
+            System.out.println((x*arr[n-1])%MODULO);
+        }
+    }
+}
