@@ -1,0 +1,41 @@
+/* You want to partition the set S={1,2,…,N} into K sets S1,S2,…,SK, such that ∣Si∣≥2, and the sum of elements in each Si is odd.
+Is it possible to do so?Note 1: Partitioning the set S={1,2,…,N} into K sets S1,S2,…,SK means that every element of S should be in exactly one of the sets S1,S2,…,SK,
+and Si⊆S, for all 1≤i≤K.Note 2: ∣A∣ denotes the number of elements in the set A.*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt(),i;
+		String ans;
+		while(t--!=0){
+		    long n=sc.nextLong();
+		    long k=sc.nextLong();
+		    long o;
+		    ans="no";
+		    
+		    if(k>n/2){
+		        System.out.println("no");
+		    }
+		    else{
+		        if(n%2==0){
+		            o=n/2;
+		            
+		        }
+		        else{
+		            o=(n+1)/2;
+		        }
+		        long rem=k-o;
+		        if(rem%2==0){
+		            ans="yes";
+		        }
+		        System.out.println(ans);
+		    }
+		}
+	}
+}
