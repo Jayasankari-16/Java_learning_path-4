@@ -1,0 +1,22 @@
+/* Find the minimum number of operations required such that Naveej can make a palindromic string using all the characters he has.
+It can be proven that there always exists at least one sequence of operations allowing for the formation of a palindrome.*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main(String[] args) {
+        Scanner in=new Scanner(System.in);
+        int t = in.nextInt();
+        while(t-->0){
+        int n = in.nextInt();
+        long cnt = 0;
+        for(int i=0; i<n;i++){
+            if(in.nextInt()%2==1) cnt++;
+        }
+        System.out.println(cnt/2);
+        }
+    }
+}
