@@ -1,0 +1,53 @@
+/* You are given an integer C. 
+Let d be the smallest integer such that 2d is strictly greater than C.
+Consider all pairs of non-negative integers (A,B) such that A,B<2 d and A⊕B=C (⊕ denotes the bitwise XOR operation).
+Find the maximum value of A⋅B over all these pairs.*/
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static long binpow(long x, long n) {
+        if (n == 0) {
+            return 1;
+        }
+        if (x == 0) {
+            return 0;
+        }
+        if (n % 2 == 0) {
+            long temp = binpow(x, n / 2);
+            return temp * temp;
+        }
+        return x * binpow(x, n - 1);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t--> 0) {
+            long c = sc.nextLong();
+            long a = 0;
+            long b = 0;
+            boolean whetherSet = false;
+            int n = (int)(Math.log(c) / Math.log(2)) + 1;
+            for (int i = n; i >= 1; i--) {
+                long check = binpow(2, i - 1);
+                if ((check & c) == 0) {
+                    a += check;
+                    b += check;
+                } else {
+                    if (whetherSet) {
+                        a += 0;
+                        b += check;
+                    } else {
+                        a += check;
+                        b += 0;
+                        whetherSet = true;
+                    }
+                }
+            }
+            System.out.println(a * b);
+        }
+        sc.close();
+    }
+}
