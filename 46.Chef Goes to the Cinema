@@ -1,0 +1,39 @@
+/* Subway trains in Chefcity allow Chef to move between any pair of adjacent stations in one minute, regardless of the distance between them.
+Chef can also move by walking; his walking speed is one unit of distance in one minute.
+Chef can enter or exit the subway at any station.
+Chef has decided to go to the cinema. The only cinema in Chefcity is located at point X. 
+(Note that the cinema can be placed at the same point as a subway station.)
+Help Chef determine the minimum possible time required to get to the cinema from his house.*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc = new Scanner(System.in);
+		int test = sc.nextInt();
+		
+		while(test-- > 0)  {
+			long x = sc.nextLong();
+		    
+            double stationsWert = (0.5 + Math.sqrt(8 * x + 1) / 2);
+		    
+		    ;
+		    
+		    int station = (int) Math.ceil(stationsWert);
+
+		    long maxDistanz = station * (station - 1) / 2;
+
+		    long minDistanz = (station - 1) * (station - 2) / 2;
+
+		    int nächsteStation = (x - minDistanz) <= (maxDistanz - x) ? station - 1 : station;
+
+		   int dauer = nächsteStation - 1;
+		   dauer += Math.min(x - minDistanz, maxDistanz - x);
+		   System.out.println(dauer)	
+		}
+	}
+}
