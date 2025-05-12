@@ -1,0 +1,35 @@
+/* In this problem we assume, that Harrenhal can be described as a string H, which consists only of symbols 'a' and 'b'.
+Harrenhal is completely ruined if and only if the length of H is equal to zero.
+So, how to make H empty? Send a military troop! When a military troop of the king reach the castle, they delete some palindromic subsequence S of H. 
+For example, let H = 'abbabaab'. Then the current military troop can choose S = 'ababa'(Let's make symbols of S bold in H: 'abbabaab'). 
+After deleting S, H will be equal to 'bab'. Military troops are free to choose any possible palindromic subsequence of H.
+Your task is pretty simple: determine the minimal number of military troops, that the Lord of the Seven Kingdoms has to send in order to ruin Harrenhal.*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+		    String s=sc.next();
+		    StringBuffer sb=new StringBuffer(s);
+		    if(s.indexOf('a')==-1||s.indexOf('b')==-1)
+		    System.out.println("1");
+		    else
+		    {
+		     if(s.equals(String.valueOf(sb.reverse())))
+		      System.out.println("1");
+		     else
+		     System.out.println("2");
+		    }
+		        
+		    }
+	}
+}
