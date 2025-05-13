@@ -1,0 +1,30 @@
+/* You are given a positive integer N. You have to print exactly N+1 positive integers satisfying the following conditions:
+Exactly one value should appear twice, all the remaining values should appear only once.
+Sum of all these values should be equal to 2N.
+You have to print the values in non-decreasing order. If there are multiple solutions, you can print any of them.*/
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		    long n=sc.nextInt();
+		    System.out.print('1'+" ");
+		    long sum=1;
+		    long totalsum=0;
+		    totalsum=(long)Math.pow(2,n);
+		    for(int i=1;i<n;i++){
+		        System.out.print(i+" ");
+		        sum+=i;
+		    }
+		    System.out.print(totalsum-sum);
+		    System.out.println();
+		}
+	}
+}
