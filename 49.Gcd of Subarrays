@@ -1,0 +1,36 @@
+/* You are given positive integers N and K.
+You have to construct an array A of length N such that :1≤Ai≤1018 ∑j=iNF(i,j)=K, where F(i,j) denotes the gcd of all elements of the subarray A[i,j].
+If multiple such arrays exist, print any.Report −1 if no such array exists.Note that A[l,r] denotes the subarray [Al,Al+1,…,Ar−1,Ar].*/
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		while( t-- > 0 ){
+		    int n = sc.nextInt();
+		    long k = sc.nextLong();
+		    
+		    long totalSubArrays = n*(n+1) / 2;
+		    
+		    if( totalSubArrays > k ){
+		        System.out.println(-1);
+		    }
+		    else{
+		        StringBuilder s = new StringBuilder();
+		        for( int i = 1 ; i < n ; i++ ){
+		            s.append("1");
+		            s.append(" ");
+		        }
+		        long ans = k - totalSubArrays + 1;
+		        s.append( String.valueOf(ans) );
+		        System.out.println( s.toString() );   
+		    }
+		}
+	}
+}
